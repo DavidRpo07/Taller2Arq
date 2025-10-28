@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Imagen Pokenea{% endblock %}
+
+{% block head %}
+<style>
+  .card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    margin: auto;
+  }
+  .card img {
+    width: 100%;
+    height: 260px;
+    object-fit: contain;
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+  h1 {
+    margin-bottom: 10px;
+  }
+  p {
+    margin: 8px 0;
+  }
+  code {
+    background-color: #eee;
+    padding: 3px 8px;
+    border-radius: 5px;
+  }
+  .btn {
+    margin-top: 15px;
+    background-color: #ffcb05;
+    border: none;
+    padding: 10px 20px;
+    color: #2a75bb;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+  .btn:hover {
+    background-color: #f0bf04;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+  <h1>{{ nombre }}</h1>
+  <img src="{{ imagen_url }}" alt="{{ nombre }}">
+  <p><em>"{{ frase }}"</em></p>
+  <p>ID del contenedor: <code>{{ container_id }}</code></p>
+
+  <button class="btn" onclick="window.location.href='/imagen'">
+    🔄 Ver otro Pokenea
+  </button>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Pokenea Random{% endblock %}
+
+{% block head %}
+<style>
+    .card {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 25px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      margin: auto;
+    }
+    h1 {
+      font-size: 26px;
+      color: #2a75bb;
+    }
+    p {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+    code {
+      background: #ddd;
+      padding: 3px 8px;
+      border-radius: 5px;
+    }
+    .btn {
+      margin-top: 15px;
+      background-color: #ffcb05;
+      border: none;
+      padding: 10px 20px;
+      color: #2a75bb;
+      cursor: pointer;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+  <h1>{{ nombre }}</h1>
+  <p><strong>ID:</strong> {{ id }}</p>
+  <p><strong>Altura:</strong> {{ altura }} m</p>
+  <p><strong>Habilidad:</strong> {{ habilidad }}</p>
+  <p><strong>Frase:</strong> <em>"{{ frase }}"</em></p>
+  <p><strong>Contenedor:</strong> <code>{{ container_id }}</code></p>
+  <button class="btn" onclick="window.location.reload();">🔄 Otro Pokenea</button>
+</div>
+{% endblock %}
