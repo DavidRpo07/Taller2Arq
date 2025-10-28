@@ -1,22 +1,28 @@
 name: Docker Image CI
-on:
- push:
- branches: [ main ]
- pull_request:
- branches: [ main ]
-jobs:
- build:
- runs-on: ubuntu-latest
- steps:
- - uses: actions/checkout@v4
- - name: docker login
- env:
- DOCKER_USER: ${{secrets.DOCKERHUB_USER}}
- DOCKER_PASS: ${{secrets.DOCKERHUB_PASS}}
- run: |
- docker login -u $DOCKER_USER -p $DOCKER_PASS
- - name: Build the Docker image
- run: docker build . --file Dockerfile --tag davidrpo08/pokenas:latest
 
- - name: Docker Push
- run: docker push davidrpo08/pokenas
+on:
+  push:
+    branches: [ main ]   # Ejecuta al hacer push en main
+  pull_request:
+    branches: [ main ]   # Ejecuta en PRs hacia la rama main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Usa una máquina virtual de Ubuntu
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4  # Obtiene el código de GitHub
+
+      - name: Docker Login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKERHUB_USER }}
+          DOCKER_PASS: ${{ secrets.DOCKERHUB_PASS }}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS  # Logueo en Docker Hub
+
+      - name: Build the Docker Image
+        run: docker build . --file Dockerfile --tag davidrpo08/pokeneas:latest  # Construye la imagen
+
+      - name: Docker Push
+        run: docker push davidrpo08/pokeneas:latest  # Subir la imagen a Docker Hub
